@@ -1,0 +1,151 @@
+/* Посмотрим пример блока с фотографиями, в котором на мобильной версии отображается только одна фотография, на планшете 4, а на десктопе все 6. Посмотрите через инструменты разработчика, что в каждой версии браузер получает только те фотографии, которые нужны для определенной версии */
+
+body {
+  font-family: Tahoma, sans-serif;
+}
+
+/* mobile start */
+
+.wrapper {
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.photo-item {
+  width: 100%;
+  min-height: 180px;
+  background-color: #bdbdbd;
+  margin-bottom: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-size: cover;
+}
+
+.photo-item p {
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: pink;
+  display: inline-block;
+  
+}
+
+/* на мобильной е=версии отображается только одна картинка, посмотрите в инструментах разработчика: других картинок в мобильной версии нет  */
+
+.photo-item--from-tablet,
+.photo-item--from-desktop {
+  display: none;
+}
+
+@media (max-width: 767px) {
+
+  /* загружаем картинку для мобильной версии только на мобильной версии */
+
+  .photo-item--first {
+    background-image: url(../images/1-mobile.jpg);
+  }
+
+}
+
+/* mobile end */
+
+/* tablet start */
+
+@media (min-width: 768px) {
+
+  /* общие стили для этой секции */
+  .wrapper {
+    width: 768px;
+  }
+  
+  .photos__wrapper {
+    display: flex;
+    flex-wrap: wrap;;
+  }
+  
+  .photo-item {
+    width: 45%;
+    margin: 10px;
+    display: block;
+  }
+
+  /* включаем отображение изображений для планшета */
+
+  .photo-item--from-tablet {
+    display: block;
+  }
+
+  .photo-item--from-desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+
+  /* загружаем картинки для планшетной версии только на планшетной версии */
+
+  .photo-item--first {
+    background-image: url(../images/1-tablet.jpg);
+  }
+
+  .photo-item--second {
+    background-image: url(../images/2-tablet.jpg);
+  }
+
+  .photo-item--third {
+    background-image: url(../images/3-tablet.jpg);
+  }
+
+  .photo-item--fourth {
+    background-image: url(../images/4-tablet.jpg);
+  }
+}
+
+/* tablet end */
+
+/* desctop start */
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1200px;
+    padding: 0 30px;
+  }
+  
+  .photo-item {
+    width: 30%;
+  }
+
+  .photo-item--from-desktop {
+    display: block;
+  }
+
+  /* загружаем картинки для десктопной версии только на десктопной версии */
+
+  .photo-item--first {
+    background-image: url(../images/1-desktop.jpg);
+  }
+
+  .photo-item--second {
+    background-image: url(../images/2-desktop.jpg);
+  }
+
+  .photo-item--third {
+    background-image: url(../images/3-desktop.jpg);
+  }
+
+  .photo-item--fourth {
+    background-image: url(../images/4-desktop.jpg);
+  }
+
+  .photo-item--fifth {
+    background-image: url(../images/5-desktop.jpg);
+  }
+
+  .photo-item--sixth {
+    background-image: url(../images/6-desktop.jpg);
+  }
+}
+
+/* desctop end */
